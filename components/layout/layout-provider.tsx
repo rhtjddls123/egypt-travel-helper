@@ -8,9 +8,9 @@ interface LayoutProviderProps {
 
 const LayoutProvider = ({ children }: LayoutProviderProps) => {
   return (
-    <div className="flex flex-col min-h-screen">
+    <div className="flex flex-col min-h-screen bg-sand-primary">
       <LayoutHeader />
-      <main className="flex-1 overflow-auto bg-sand-primary p-4">{children}</main>
+      <main className="container max-w-[1400px] mx-auto flex-1 overflow-auto p-4">{children}</main>
       <LayoutFooter />
     </div>
   );
