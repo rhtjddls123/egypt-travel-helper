@@ -18,7 +18,7 @@ const LayoutHeader = () => {
   const firstSegment = (path.split("/")[1] || "") as PathType;
 
   return (
-    <header className="w-full h-14 bg-gold-primary shadow-md sticky top-0">
+    <header className="w-full h-14 bg-gold-primary sticky shadow-md top-0">
       <div className="flex text-white h-full items-center pl-4">
         {firstSegment !== "" && (
           <Link href="/" className="mr-2">
