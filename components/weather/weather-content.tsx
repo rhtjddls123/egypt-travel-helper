@@ -24,6 +24,7 @@ const WeatherContent = async ({ cityName, value }: WeatherContentProps) => {
   };
 
   const currentWeatherIcon = WEATHER_ICON[icon];
+  const time = new Date();
 
   return (
     <TabsContent value={value}>
@@ -36,6 +37,7 @@ const WeatherContent = async ({ cityName, value }: WeatherContentProps) => {
         />
         <WeatherDetail humidity={humidity} wind={speed} rain={rain} />
         <WeatherForecast cityName={cityName} />
+        {time.toString()}
       </div>
     </TabsContent>
   );
