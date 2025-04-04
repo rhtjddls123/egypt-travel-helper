@@ -33,7 +33,6 @@ const WeatherForecastCard = ({ data }: WeatherForecastCardProps) => {
             <span className="text-xs text-gray-500">{info.rain || 0}mm</span>
             <span className="text-xs text-gray-500">{info.main.humidity}%</span>
             <span className="text-xs text-gray-500">{info.wind.speed}m/s</span>
-            {timeZone}
           </div>
         );
       })}
