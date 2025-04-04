@@ -14,7 +14,8 @@ type LocationData = {
 async function getCoordinates(city: string) {
   const api = process.env.WEATHER_API;
   const data = await fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${api}`
+    `http://api.openweathermap.org/geo/1.0/direct?q=${city}&limit=5&appid=${api}`,
+    { cache: "no-cache" }
   );
 
   const resData = (await data.json()) as LocationData[];
@@ -29,7 +30,8 @@ export async function getCurrentWeather(city: string) {
   const { lat, lon } = await getCoordinates(city);
 
   const data = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=kr&units=metric&appid=${api}`
+    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&lang=kr&units=metric&appid=${api}`,
+    { cache: "no-cache" }
   );
 
   const currentWeatherData = (await data.json()) as CurrentWeatherType;
@@ -41,7 +43,8 @@ export async function getWeekWeather(city: string) {
   const { lat, lon } = await getCoordinates(city);
 
   const data = await fetch(
-    `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&lang=kr&units=metric&appid=${api}`
+    `http://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&lang=kr&units=metric&appid=${api}`,
+    { cache: "no-cache" }
   );
 
   const resData = (await data.json()) as ForecastWeatherType;
