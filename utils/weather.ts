@@ -48,13 +48,13 @@ export async function getWeekWeather(city: string) {
   );
 
   const resData = (await data.json()) as ForecastWeatherType;
-  const fiteredWeather = filterForecastData(resData.list);
 
-  return fiteredWeather;
+  return resData;
 }
 
-function filterForecastData(data: ForecastWeatherType["list"]) {
-  const now = new Date();
+export function filterForecastData(data: ForecastWeatherType["list"], timeZone: string) {
+  const now = new Date(new Date().toLocaleString("en-US", { timeZone }));
+
   const fourDaysLater = new Date();
 
   fourDaysLater.setDate(now.getDate() + 4);

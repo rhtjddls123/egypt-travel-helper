@@ -1,7 +1,6 @@
-import { WEATHER_ICON } from "@/constants/weather";
-import { WeatherIconCode } from "@/types/weatherType";
-import { formatHour, getWeekWeather } from "@/utils/weather";
+import { getWeekWeather } from "@/utils/weather";
 import React from "react";
+import WeatherForecastCard from "./weather-forecast-card";
 
 interface WeatherForecastProps {
   cityName: string;
@@ -9,7 +8,6 @@ interface WeatherForecastProps {
 
 const WeatherForecast = async ({ cityName }: WeatherForecastProps) => {
   const data = await getWeekWeather(cityName);
-  let count = 0;
 
   return (
     <div className="mt-4 pt-4 border-t">
@@ -21,25 +19,7 @@ const WeatherForecast = async ({ cityName }: WeatherForecastProps) => {
           <span>바람</span>
         </div>
         <div className="flex horizontal-scroll">
-          {data.map((info) => {
-            const Icon = WEATHER_ICON[info.weather[0].icon as WeatherIconCode];
-            const time = formatHour(info.dt_txt || "");
-            const dayLabels = ["내일", "모레", "글피", "0시"];
-
-            return (
-              <div className="flex flex-col items-center mr-4 last:mr-0" key={info.dt_txt}>
-                <span className="text-xs text-gray-500">
-                  {time === "0시" ? dayLabels[count++] : time}
-                </span>
-                <Icon className="my-1 w-6 h-6 text-gold-primary" />
-                <span className="text-sm font-medium">{info.main.temp.toFixed(1)}°</span>
-                <span className="text-xs text-gray-500">{info.pop}%</span>
-                <span className="text-xs text-gray-500">{info.rain || 0}mm</span>
-                <span className="text-xs text-gray-500">{info.main.humidity}%</span>
-                <span className="text-xs text-gray-500">{info.wind.speed}m/s</span>
-              </div>
-            );
-          })}
+          <WeatherForecastCard data={data} />
         </div>
       </div>
     </div>
