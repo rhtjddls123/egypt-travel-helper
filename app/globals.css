@@ -146,3 +146,7 @@
 .horizontal-scroll::-webkit-scrollbar-track {
   background: transparent;
 }
+
+.tab-select-wrapper span {
+  flex-grow: 1;
+}
