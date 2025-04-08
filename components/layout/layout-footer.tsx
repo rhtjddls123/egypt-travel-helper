@@ -1,5 +1,5 @@
 import { Compass, Home, Lightbulb, PenTool, Utensils } from "lucide-react";
-import Link from "next/link";
+import NavLink from "../NavLink";
 
 const menuName = [
   { name: "홈", path: "/", icon: <Home className="w-5 h-5 mb-1" /> },
@@ -15,10 +15,15 @@ const LayoutFooter = () => {
       <ul className="flex ">
         {menuName.map((menu) => (
           <li key={menu.name} className="py-2 flex-1 text-gray-500">
-            <Link href={menu.path} className="flex flex-col items-center">
+            <NavLink
+              href={menu.path}
+              className="flex flex-col items-center"
+              activeClassName="text-gold-primary"
+              end
+            >
               {menu.icon}
               <span className="text-xs">{menu.name}</span>
-            </Link>
+            </NavLink>
           </li>
         ))}
       </ul>
