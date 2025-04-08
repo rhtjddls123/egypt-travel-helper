@@ -30,7 +30,7 @@ const WeatherForecastCard = ({ data }: WeatherForecastCardProps) => {
             <Icon className="my-1 w-6 h-6 text-gold-primary" />
             <span className="text-sm font-medium">{info.main.temp.toFixed(1)}°</span>
             <span className="text-xs text-gray-500">{info.pop}%</span>
-            <span className="text-xs text-gray-500">{info.rain || 0}mm</span>
+            <span className="text-xs text-gray-500">{info.rain?.["3h"] || 0}mm</span>
             <span className="text-xs text-gray-500">{info.main.humidity}%</span>
             <span className="text-xs text-gray-500">{info.wind.speed}m/s</span>
           </div>

@@ -52,5 +52,5 @@ export interface CurrentWeatherType extends WeatherType {
 export type WeatherIconCode = keyof typeof WEATHER_ICON;
 
 export interface ForecastWeatherType {
-  list: ({ rain?: number; pop: number } & WeatherType)[];
+  list: ({ rain?: { "3h": number }; snow?: { "3h": number }; pop: number } & WeatherType)[];
 }
