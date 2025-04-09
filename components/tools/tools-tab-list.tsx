@@ -13,7 +13,7 @@ const ToolsTabList = ({ datas }: ToolsTabListProps) => {
   return (
     <>
       {chunked.map((group) => (
-        <TabsList key={group.map((g) => g.id).join("-")} className="w-full h-auto p-1">
+        <TabsList key={group.map((g) => g.id).join("-")} className="w-full h-auto p-1 mb-4">
           {group.map((tool) => (
             <TabsTrigger className="px-3 py-2 h-9" key={tool.id} value={tool.id}>
               {tool.name}
