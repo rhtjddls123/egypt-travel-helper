@@ -20,19 +20,19 @@ const ToolsContentWrapper = ({
   usageContent
 }: ToolsContentWrapperProps) => {
   return (
-    <TabsContent value={id} className="bg-white p-4 rounded-xl">
+    <TabsContent value={id} className="bg-white p-4 rounded-lg shadow-md">
       <div className="space-y-6">
         <Card>
           <CardHeader>
-            <CardTitle>{title}</CardTitle>
-            <CardDescription>{description}</CardDescription>
+            <CardTitle className="text-2xl font-semibold">{title}</CardTitle>
+            <CardDescription className="text-sm">{description}</CardDescription>
           </CardHeader>
           <CardContent>{content}</CardContent>
         </Card>
 
         <Card>
           <CardHeader>
-            <CardTitle>{usageTitle}</CardTitle>
+            <CardTitle className="text-2xl font-semibold">{usageTitle}</CardTitle>
           </CardHeader>
           <CardContent>{usageContent}</CardContent>
         </Card>
