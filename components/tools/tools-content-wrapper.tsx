@@ -30,7 +30,7 @@ const ToolsContentWrapper = ({
           <CardContent>{content}</CardContent>
         </Card>
 
-        <Card>
+        <Card className="gap-4">
           <CardHeader>
             <CardTitle className="text-2xl font-semibold">{usageTitle}</CardTitle>
           </CardHeader>
