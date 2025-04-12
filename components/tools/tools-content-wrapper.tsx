@@ -5,6 +5,7 @@ import { TabsContent } from "../ui/tabs";
 interface ToolsContentWrapperProps {
   title: ReactNode;
   description?: ReactNode;
+  modal?: ReactNode;
   content: ReactNode;
   usageTitle?: ReactNode;
   usageContent?: ReactNode;
@@ -14,6 +15,7 @@ interface ToolsContentWrapperProps {
 const ToolsContentWrapper = ({
   id,
   title,
+  modal,
   description,
   content,
   usageTitle,
@@ -23,9 +25,12 @@ const ToolsContentWrapper = ({
     <TabsContent value={id} className="bg-white p-4 rounded-lg shadow-md">
       <div className="space-y-6">
         <Card>
-          <CardHeader>
-            <CardTitle className="text-2xl font-semibold">{title}</CardTitle>
-            <CardDescription className="text-sm">{description}</CardDescription>
+          <CardHeader className="flex justify-between">
+            <div>
+              <CardTitle className="text-2xl font-semibold">{title}</CardTitle>
+              <CardDescription className="text-sm">{description}</CardDescription>
+            </div>
+            {modal}
           </CardHeader>
           <CardContent>{content}</CardContent>
         </Card>
