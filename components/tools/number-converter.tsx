@@ -8,21 +8,21 @@ interface NumberConverterProps {
   id: string;
 }
 
+const arabicNumerals: Record<string, string> = {
+  "0": "٠",
+  "1": "١",
+  "2": "٢",
+  "3": "٣",
+  "4": "٤",
+  "5": "٥",
+  "6": "٦",
+  "7": "٧",
+  "8": "٨",
+  "9": "٩"
+};
+
 const NumberConverter = ({ id }: NumberConverterProps) => {
   const [result, setReulst] = useState<string>();
-
-  const arabicNumerals: Record<string, string> = {
-    "0": "٠",
-    "1": "١",
-    "2": "٢",
-    "3": "٣",
-    "4": "٤",
-    "5": "٥",
-    "6": "٦",
-    "7": "٧",
-    "8": "٨",
-    "9": "٩"
-  };
 
   function handleInputChange(e: ChangeEvent<HTMLInputElement>) {
     const value = e.target.value;
@@ -53,7 +53,7 @@ const NumberConverter = ({ id }: NumberConverterProps) => {
             </div>
             <div>
               <p className="mb-2 font-medium text-sm">아랍 숫자 결과</p>
-              <div className="p-3 text-4xl text-center rounded-md border bg-slate-50">
+              <div className="p-3 text-4xl text-center rounded-md border bg-slate-50 break-words whitespace-normal overflow-auto max-h-64">
                 {result ? result : <p className="text-2xl">결과가 여기에 표시됩니다</p>}
               </div>
             </div>
