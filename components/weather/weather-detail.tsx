@@ -17,7 +17,7 @@ const WeatherDetail = ({ wind, humidity, rain }: WeatherDetailProps) => {
         </div>
         <div className="flex items-center ">
           <Wind className="w-4 h-4 text-gray-500 mr-1" />
-          <span>바람 {wind}m/h</span>
+          <span>바람 {wind}m/s</span>
         </div>
       </div>
 
