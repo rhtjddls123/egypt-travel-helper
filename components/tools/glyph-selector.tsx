@@ -22,7 +22,7 @@ const GlyphSelector = ({
   const [currentStep, setCurrentStep] = useState(0);
 
   function getCurrentOptions(): HieroglyphOption[] {
-    const currentChar = processedChars[currentStep];
+    const currentChar = processedChars[currentStep].toLowerCase();
     return hieroglyphMap[currentChar] || [{ symbol: "?", meaning: "알 수 없음" }];
   }
 
