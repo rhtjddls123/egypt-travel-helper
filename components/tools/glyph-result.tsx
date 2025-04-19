@@ -39,7 +39,7 @@ const GlyphResult = ({ processedChars, result, onReset }: GlyphResultProps) => {
           </div>
         </TabsContent>
         <TabsContent value="details">
-          <ScrollArea className="h-[300px] rounded-md border">
+          <ScrollArea className="h-[200px] rounded-md border">
             <div className="p-4">
               <table className="table-auto w-full">
                 <thead>
