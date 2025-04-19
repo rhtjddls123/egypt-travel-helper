@@ -25,12 +25,12 @@ const ToolsContentWrapper = ({
     <TabsContent value={id} className="bg-white p-4 rounded-lg shadow-md">
       <div className="space-y-6">
         <Card>
-          <CardHeader className="flex justify-between">
-            <div>
-              <CardTitle className="text-2xl font-semibold">{title}</CardTitle>
-              <CardDescription className="text-sm">{description}</CardDescription>
-            </div>
-            {modal}
+          <CardHeader>
+            <CardTitle className="flex justify-between">
+              <p className="text-2xl font-semibold ">{title}</p>
+              {modal}
+            </CardTitle>
+            <CardDescription className="text-sm">{description}</CardDescription>
           </CardHeader>
           <CardContent>{content}</CardContent>
         </Card>
