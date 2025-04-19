@@ -16,7 +16,7 @@ const GlyphConverterInfoModal = () => {
       <DialogTrigger asChild>
         <Button variant="outline" className="cursor-pointer">
           <Info className="h-4 w-4" />
-          상형문자 가이드
+          가이드
         </Button>
       </DialogTrigger>
       <DialogContent className="w-4/5">
