@@ -1,7 +1,7 @@
 import React from "react";
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "../ui/tabs";
-import { ScrollArea } from "../ui/scroll-area";
-import { Button } from "../ui/button";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "../../ui/tabs";
+import { ScrollArea } from "../../ui/scroll-area";
+import { Button } from "../../ui/button";
 import { HieroglyphOption } from "./glyph-converter-content";
 
 interface GlyphResultProps {

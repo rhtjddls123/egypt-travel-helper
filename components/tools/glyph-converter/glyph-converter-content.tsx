@@ -1,8 +1,8 @@
 "use client";
 
-import { Card, CardContent } from "../ui/card";
-import { Input } from "../ui/input";
-import { Button } from "../ui/button";
+import { Card, CardContent } from "../../ui/card";
+import { Input } from "../../ui/input";
+import { Button } from "../../ui/button";
 import { useRef, useState } from "react";
 import GlyphSelector from "./glyph-selector";
 import GlyphResult from "./glyph-result";

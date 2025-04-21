@@ -1,5 +1,5 @@
 import React from "react";
-import ToolsContentWrapper from "./tools-content-wrapper";
+import ToolsContentWrapper from "../tools-content-wrapper";
 
 import GlyphConverterInfoModal from "./glyph-converter-info-modal";
 import GlyphConverterContent from "./glyph-converter-content";
