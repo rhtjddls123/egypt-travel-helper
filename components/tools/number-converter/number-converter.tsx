@@ -1,8 +1,8 @@
 "use client";
 
 import { ChangeEvent, useState } from "react";
-import { Input } from "../ui/input";
-import ToolsContentWrapper from "./tools-content-wrapper";
+import { Input } from "../../ui/input";
+import ToolsContentWrapper from "../tools-content-wrapper";
 
 interface NumberConverterProps {
   id: string;
