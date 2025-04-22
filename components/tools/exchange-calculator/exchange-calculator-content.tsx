@@ -9,6 +9,7 @@ import {
   SelectValue
 } from "@/components/ui/select";
 import { ExchangeRatesDbType, ExchangeRatesKeyType } from "@/types/dbType";
+import { formatKrDate } from "@/utils/utils";
 import React, { useEffect, useState } from "react";
 
 const currencyMapping = {
@@ -57,67 +58,72 @@ const ExchangeCalculatorContent = ({ exchange }: ExchangeCalculatorContentProps)
   }, [money, rate, sourceCurrency, targetCurrency]);
 
   return (
-    <div className="w-full max-w-lg space-y-4">
-      <div className="flex space-x-4">
-        <div className="w-full max-w-96">
-          <span>금액</span>
-          <Input
-            placeholder="금액을 입력해주세요"
-            type="number"
-            value={money || ""}
-            onChange={(e) => setMoney(Number(e.target.value))}
-          />
-        </div>
-        <div>
-          <span>통화</span>
-          <Select
-            value={sourceCurrency}
-            onValueChange={(val) => setSourceCurrency(val as CurrencyType)}
-          >
-            <SelectTrigger className="max-w-32">
-              <SelectValue placeholder="Select a fruit" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectGroup>
-                {currencyList.map((item) => (
-                  <SelectItem key={item} value={item}>
-                    {currencyMapping[item]}
-                  </SelectItem>
-                ))}
-              </SelectGroup>
-            </SelectContent>
-          </Select>
-        </div>
-      </div>
-      <div className="flex space-x-4">
-        <div className="w-full max-w-96">
-          <span>결과</span>
-          <div className="py-1 px-3 border border-input rounded-md text-base h-9 flex items-center">
-            {result.toFixed(2) || ""}
+    <>
+      <div className="w-full max-w-lg space-y-4">
+        <div className="flex space-x-4">
+          <div className="w-full max-w-96">
+            <span>금액</span>
+            <Input
+              placeholder="금액을 입력해주세요"
+              type="number"
+              value={money || ""}
+              onChange={(e) => setMoney(Number(e.target.value))}
+            />
+          </div>
+          <div>
+            <span>통화</span>
+            <Select
+              value={sourceCurrency}
+              onValueChange={(val) => setSourceCurrency(val as CurrencyType)}
+            >
+              <SelectTrigger className="max-w-32">
+                <SelectValue placeholder="Select a fruit" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  {currencyList.map((item) => (
+                    <SelectItem key={item} value={item}>
+                      {currencyMapping[item]}
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
+              </SelectContent>
+            </Select>
           </div>
         </div>
-        <div>
-          <span>변환 통화</span>
-          <Select
-            value={targetCurrency}
-            onValueChange={(val) => setTargetCurrency(val as CurrencyType)}
-          >
-            <SelectTrigger className="max-w-32">
-              <SelectValue placeholder="Select a fruit" />
-            </SelectTrigger>
-            <SelectContent>
-              <SelectGroup>
-                {currencyList.map((item) => (
-                  <SelectItem key={item} value={item}>
-                    {currencyMapping[item]}
-                  </SelectItem>
-                ))}
-              </SelectGroup>
-            </SelectContent>
-          </Select>
+        <div className="flex space-x-4">
+          <div className="w-full max-w-96">
+            <span>결과</span>
+            <div className="py-1 px-3 border border-input rounded-md text-base h-9 flex items-center">
+              {result.toFixed(2) || ""}
+            </div>
+          </div>
+          <div>
+            <span>변환 통화</span>
+            <Select
+              value={targetCurrency}
+              onValueChange={(val) => setTargetCurrency(val as CurrencyType)}
+            >
+              <SelectTrigger className="max-w-32">
+                <SelectValue placeholder="Select a fruit" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectGroup>
+                  {currencyList.map((item) => (
+                    <SelectItem key={item} value={item}>
+                      {currencyMapping[item]}
+                    </SelectItem>
+                  ))}
+                </SelectGroup>
+              </SelectContent>
+            </Select>
+          </div>
         </div>
       </div>
-    </div>
+      <span className="text-gray-500 text-xs">
+        환율 업데이트 시간: {formatKrDate(exchange.updatedAt)}
+      </span>
+    </>
   );
 };
 

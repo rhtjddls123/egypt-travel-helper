@@ -9,7 +9,7 @@ interface ExchangeCalculatorProps {
 
 const ExchangeCalculator = async ({ id }: ExchangeCalculatorProps) => {
   await fetch(`${process.env.BASE_URL}/api/exchange/set`, {
-    next: { revalidate: 60 * 60 }
+    next: { revalidate: 3600 }
   });
   const response = await fetch(`${process.env.BASE_URL}/api/exchange/get`, {
     cache: "no-store"
