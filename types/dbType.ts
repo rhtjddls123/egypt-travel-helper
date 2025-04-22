@@ -6,3 +6,5 @@ export interface ExchangeRatesDbType {
   KRWEUR: number;
   KRWCNY: number;
 }
+
+export type ExchangeRatesKeyType = keyof ExchangeRatesDbType;
