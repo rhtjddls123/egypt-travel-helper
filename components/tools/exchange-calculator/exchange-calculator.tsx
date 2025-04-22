@@ -12,7 +12,7 @@ const ExchangeCalculator = async ({ id }: ExchangeCalculatorProps) => {
     next: { revalidate: 3600 }
   });
   const response = await fetch(`${process.env.BASE_URL}/api/exchange/get`, {
-    cache: "no-store"
+    next: { revalidate: 3600 }
   });
   const rates = (await response.json()) as { exchange: ExchangeRatesDbType };
 
