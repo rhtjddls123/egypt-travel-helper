@@ -5,3 +5,9 @@ export interface ToolsListType {
   name: string;
   Component: ElementType;
 }
+
+export interface PhrasesItemType {
+  korean: string;
+  arabic: string;
+  pronunciation: string;
+}
