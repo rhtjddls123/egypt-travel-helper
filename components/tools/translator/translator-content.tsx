@@ -6,6 +6,7 @@ import React, { ChangeEvent, useState } from "react";
 import TranslatorBox from "./translator-box";
 import { languageListItemType, TtsLanguageCodeType } from "@/types/translatorType";
 import LanguageChangeButton from "./language-change-button";
+import { toast } from "sonner";
 
 export const languageList = [
   { id: "Arabic", code: "ar", korean: "아랍어" },
@@ -84,6 +85,20 @@ const TranslatorContent = () => {
     audio.play();
   }
 
+  async function handleCopy(text: string) {
+    try {
+      if (text) {
+        await navigator.clipboard.writeText(text);
+        toast.success("텍스트가 클립보드에 복사되었습니다!");
+      } else {
+        toast.error("복사할 텍스트가 없습니다.");
+      }
+    } catch (error) {
+      console.error(error);
+      toast.error("복사에 실패했습니다!");
+    }
+  }
+
   return (
     <div className="space-y-4">
       <TranslatorBox
@@ -92,7 +107,7 @@ const TranslatorContent = () => {
         selectedLanguage={from}
         placeholder="번역할 문장을 입력하세요"
         buttons={
-          <Button variant="ghost" size="icon" title="복사하기">
+          <Button onClick={() => handleCopy(text)} variant="ghost" size="icon" title="복사하기">
             <Copy className="h-4 w-4" />
           </Button>
         }
@@ -114,7 +129,7 @@ const TranslatorContent = () => {
             <Button onClick={sound} variant="ghost" size="icon" title="발음 듣기">
               <Volume className="h-4 w-4" />
             </Button>
-            <Button variant="ghost" size="icon" title="복사하기">
+            <Button onClick={() => handleCopy(result)} variant="ghost" size="icon" title="복사하기">
               <Copy className="h-4 w-4" />
             </Button>
           </div>
