@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Copy, Volume } from "lucide-react";
 import React, { ChangeEvent, useState } from "react";
 import TranslatorBox from "./translator-box";
-import { languageListItemType } from "@/types/translatorType";
+import { languageListItemType, TtsLanguageCodeType } from "@/types/translatorType";
 import LanguageChangeButton from "./language-change-button";
 
 export const languageList = [
@@ -69,6 +69,21 @@ const TranslatorContent = () => {
     setResult(data.translatedText);
   }
 
+  async function sound() {
+    let lang: TtsLanguageCodeType;
+
+    if (to === "zh-Hans") lang = "zh-CN";
+    else if (to === "zh-Hant") lang = "zh-TW";
+    else lang = to;
+
+    const res = await fetch(`/api/tts?text=${encodeURIComponent(result)}&lang=${lang}`);
+    const blob = await res.blob();
+    const url = URL.createObjectURL(blob);
+
+    const audio = new Audio(url);
+    audio.play();
+  }
+
   return (
     <div className="space-y-4">
       <TranslatorBox
@@ -96,7 +111,7 @@ const TranslatorContent = () => {
         textdirection={from === "ar" ? "rtl" : undefined}
         buttons={
           <div className="flex space-x-1">
-            <Button variant="ghost" size="icon" title="발음 듣기">
+            <Button onClick={sound} variant="ghost" size="icon" title="발음 듣기">
               <Volume className="h-4 w-4" />
             </Button>
             <Button variant="ghost" size="icon" title="복사하기">
