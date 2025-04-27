@@ -9,7 +9,7 @@ interface PhraseAudioButtonProps {
 
 const PhraseAudioButton = ({ text }: PhraseAudioButtonProps) => {
   const handleClick = async () => {
-    const res = await fetch(`/api/tts?text=${encodeURIComponent(text)}`);
+    const res = await fetch(`/api/tts?text=${encodeURIComponent(text)}&lang=ar`);
     const blob = await res.blob();
     const url = URL.createObjectURL(blob);
 

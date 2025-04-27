@@ -4,14 +4,15 @@ import { getAudioUrl } from "google-tts-api";
 export async function GET(req: Request) {
   const { searchParams } = new URL(req.url);
   const text = searchParams.get("text");
+  const lang = searchParams.get("lang");
 
-  if (!text) {
-    return NextResponse.json({ error: "No text provided" }, { status: 400 });
+  if (!text || !lang) {
+    return NextResponse.json({ error: "No text or lang provided" }, { status: 400 });
   }
 
   try {
     const url = getAudioUrl(text, {
-      lang: "ar",
+      lang: lang,
       slow: false,
       host: "https://translate.google.com"
     });
