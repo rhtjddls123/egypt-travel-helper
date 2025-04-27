@@ -10,4 +10,5 @@ export interface PhrasesItemType {
   korean: string;
   arabic: string;
   pronunciation: string;
+  description: string;
 }

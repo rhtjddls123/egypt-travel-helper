@@ -16,7 +16,10 @@ const PhraseTapContentList = ({ item }: PhraseTapContentListProps) => {
         </div>
         <PhraseAudioButton text={item.arabic} />
       </div>
-      <div className="mt-1 text-right font-medium text-lg">{item.arabic}</div>
+      <div className="flex justify-between items-center gap-2">
+        <p className="text-xs text-gray-500 flex-1">{item.description}</p>
+        <div className="text-right font-medium text-lg whitespace-nowrap">{item.arabic}</div>
+      </div>
     </li>
   );
 };
