@@ -6,6 +6,7 @@ import WeatherForecast from "./weather-forecast";
 import { getCurrentWeather } from "@/utils/weather";
 import { WEATHER_ICON } from "@/constants/weather";
 import { WeatherIconCode } from "@/types/weatherType";
+import { DateTime } from "luxon";
 
 interface WeatherContentProps {
   cityName: string;
@@ -25,9 +26,12 @@ const WeatherContent = async ({ cityName, value }: WeatherContentProps) => {
 
   const currentWeatherIcon = WEATHER_ICON[icon];
 
+  const currentTime = DateTime.now().setZone("Africa/Cairo").toFormat("yyyy-MM-dd HH:mm:ss");
+
   return (
     <TabsContent value={value}>
-      <div className="pt-4">
+      <div>
+        <p className="text-right text-muted-foreground text-xs">현지 시간: {currentTime}</p>
         <WeatherCurrent
           cityName={cityName}
           temp={temp.toFixed(1)}

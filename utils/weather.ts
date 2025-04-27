@@ -48,25 +48,7 @@ export async function getWeekWeather(city: string) {
   );
 
   const resData = (await data.json()) as ForecastWeatherType;
-
   return resData;
-}
-
-export function filterForecastData(data: ForecastWeatherType["list"], timeZone: string) {
-  const now = new Date(new Date().toLocaleString("en-US", { timeZone }));
-
-  const fourDaysLater = new Date();
-
-  fourDaysLater.setDate(now.getDate() + 4);
-  fourDaysLater.setHours(0, 0, 0, 1);
-
-  return data.filter((entry) => {
-    if (entry.dt_txt) {
-      const entryDate = new Date(entry.dt_txt);
-      return entryDate > now && entryDate < fourDaysLater;
-    }
-    return false;
-  });
 }
 
 export function formatHour(dateTime: string) {
