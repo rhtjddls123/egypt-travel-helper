@@ -2,7 +2,7 @@
 
 import { WEATHER_ICON } from "@/constants/weather";
 import { ForecastWeatherType, WeatherIconCode } from "@/types/weatherType";
-import { formatHour } from "@/utils/weather";
+import { filterForecastData, formatHour } from "@/utils/weather";
 import React from "react";
 
 interface WeatherForecastCardProps {
@@ -11,10 +11,11 @@ interface WeatherForecastCardProps {
 
 const WeatherForecastCard = ({ data }: WeatherForecastCardProps) => {
   let count = 0;
+  const forecastData = filterForecastData(data.list);
 
   return (
     <>
-      {data.list.map((info) => {
+      {forecastData.map((info) => {
         const Icon = WEATHER_ICON[info.weather[0].icon as WeatherIconCode];
         const time = formatHour(info.dt_txt || "");
         const dayLabels = ["내일", "모레", "글피", "0시"];

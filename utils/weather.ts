@@ -51,6 +51,23 @@ export async function getWeekWeather(city: string) {
   return resData;
 }
 
+export function filterForecastData(data: ForecastWeatherType["list"]) {
+  const now = new Date(new Date().toLocaleString("en-US", { timeZone: "Africa/Cairo" }));
+
+  const fourDaysLater = new Date();
+
+  fourDaysLater.setDate(now.getDate() + 4);
+  fourDaysLater.setHours(0, 0, 0, 1);
+
+  return data.filter((entry) => {
+    if (entry.dt_txt) {
+      const entryDate = new Date(entry.dt_txt);
+      return entryDate > now && entryDate < fourDaysLater;
+    }
+    return false;
+  });
+}
+
 export function formatHour(dateTime: string) {
   const dateObj = new Date(dateTime.replace(" ", "T"));
   return `${dateObj.getHours()}시`;
