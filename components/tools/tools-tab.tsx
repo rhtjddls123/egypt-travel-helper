@@ -14,9 +14,13 @@ const TOOLS_TAB_LIST = [
   { id: "translate", name: "번역기", Component: Translator }
 ];
 
-const ToolsTab = () => {
+interface ToolsTabProps {
+  defaultTab: string;
+}
+
+const ToolsTab = ({ defaultTab }: ToolsTabProps) => {
   return (
-    <Tabs defaultValue="number" className="w-full block">
+    <Tabs defaultValue={defaultTab} className="w-full block">
       <ToolsTabList datas={TOOLS_TAB_LIST} />
 
       {TOOLS_TAB_LIST.map(({ id, Component }) => (
