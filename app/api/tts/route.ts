@@ -27,7 +27,6 @@ export async function GET(req: Request) {
       }
     });
   } catch (error) {
-    console.log("여기?");
     return NextResponse.json({ error }, { status: 500 });
   }
 }
