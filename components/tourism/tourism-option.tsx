@@ -10,7 +10,7 @@ import { PlacesIdType, TourismPlaceType } from "@/types/tourismType";
 
 interface TourismOptionProps {
   select: PlacesIdType;
-  places: readonly TourismPlaceType[];
+  places: TourismPlaceType[];
   onChange: (id: PlacesIdType) => void;
 }
 

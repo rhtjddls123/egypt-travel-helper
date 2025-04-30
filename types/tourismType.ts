@@ -1,5 +1,3 @@
-import { PLACES } from "@/components/tourism/tourism-info";
-
 export interface TourismCardType {
   id: number;
   name: string;
@@ -16,4 +14,4 @@ export interface TourismPlaceType {
   name: string;
 }
 
-export type PlacesIdType = (typeof PLACES)[number]["id"];
+export type PlacesIdType = "cairo" | "popular" | "luxor" | "alexandria" | "aswan" | "giza";
